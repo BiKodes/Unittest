@@ -1,0 +1,330 @@
+-----------------------------------------------------------------------------------------------------------------------
+AUTOMATED VS MANUAL TESTING
+-----------------------------------------------------------------------------------------------------------------------
+
+---Exploratory testing is a form of manual testing.
+
+---Its done without a plan by someone just exploring the application. A complete one is created by making a list of
+   all the features the application has, the different types of input it can accept and the expected results. 
+   You need to go through every single itmem on the list and check it everytime you make a change to your code
+
+---Automated testing is the execution of your test plan by a script instead of a human.Python already comes with a set 
+   of tools and libraries to help you create automated tests for your application. 
+
+-----------------------------------------------------------------------------------------------------------------------
+UNIT TESTS VS INTEGRATION TESTS
+-----------------------------------------------------------------------------------------------------------------------
+
+---Integration testing is testing multiple components. These components are like the parts to your application, all of 
+   those classes, functions, and modules you’ve written.
+   A major challenge with integration testing is when an integration test doesn’t give the right result.It’s very hard 
+   to diagnose the issue without being able to isolate which part of the system is failing.
+   It checks that components in your application operate with each other.
+
+---A unit test is a smaller test, one that checks that a single component operates in the right way. A unit test helps 
+   you to isolate what is broken in your application and fix it faster.
+   It checks a small component in your application.
+
+---Test runner is a special application designed for running tests, checking the output, and giving you tools for 
+   debugging and diagnosing tests and applications.
+
+-----------------------------------------------------------------------------------------------------------------------
+CHOOSING A TEST RUNNER
+-----------------------------------------------------------------------------------------------------------------------
+
+---There are many test runners available for Python. The one built into the Python standard library is called unittest.
+   The three most popular test runners are:
+       
+        1. Unittest
+        2. nose or nose2
+        3. pytest
+
+========================================================================================================================
+unittest
+========================================================================================================================
+
+---It as been built into the Python standard library since version 2.1.It contains both a testing framework and a test 
+   runner.Its equirements for writing and executing tests are:
+
+    1. You put your tests into classes as methods.
+    2. You use a series of special assertion methods in the unittest.
+    3. TestCase class instead of the built-in assert statement is used.
+
+---You would have to do the following:
+
+    1. Import unittest from the standard library
+    2. Create a class and name it, that inherits from the TestCase class
+    3. Convert the test functions into methods by adding self as the first argument
+    4. The command-line entry point should call unittest.main()
+
+---Caution is required while writing test cases that need to execute in both Python 2 and 3.This is because in Python 2.7
+   and below, unittest is called unittest2.
+   If you simply import from unittest, you will get different versions with different features between Python 2 and 3.
+
+   For more information on unitest explore https://docs.python.org/3/library/unittest.html
+
+========================================================================================================================
+nose
+========================================================================================================================
+
+---It becomes increasingly hard to understand and use the output from unittest as you write hundreds or even thousands 
+   of tests for your application.
+
+---nose is compatible with any tests written using the unittest framework and can be used as a drop-in replacement for 
+   the unittest test runner.
+
+---The development of nose as an open-source application fell behind, and a fork called nose2 was created.
+
+---Install nose2 from PyPI and execute it on the command line. nose2 will try to discover all test scripts named test*.py 
+   and test cases inheriting from unittest. See:
+
+    1. pip install nose2
+    2. python -m nose2
+
+    For more information on nose2 explore https://docs.nose2.io/en/latest/
+
+
+========================================================================================================================
+pytest
+========================================================================================================================
+
+---It supports execution of unittest test cases.Its advantage is writing pytest test cases which are a series of 
+   functions in a Python file starting with the name test_.
+
+---It has the following additional great features:
+
+    1. Support for the built-in assert statement instead of using special self.assert*() methods
+    2. Support for filtering for test cases
+    3. Ability to rerun from the last failing test
+    4. An ecosystem of hundreds of plugins to extend the functionality
+
+    For more information on Pytest explore https://docs.pytest.org/en/latest/
+
+------------------------------------------------------------------------------------------------------------------------
+How to Structure a Simple Test
+------------------------------------------------------------------------------------------------------------------------
+
+---You have to make a couple of decisions before you dive into writing tests. 
+
+    1. What do you want to test?
+    2. Are you writing a unit test or an integration test?
+
+---The structure of a test should follow this workflow:
+
+    1. Create your inputs
+    2. Execute the code being tested, capturing the output
+    3. Compare the output with an expected result
+
+
+------------------------------------------------------------------------------------------------------------------------
+How to Write Assertions
+------------------------------------------------------------------------------------------------------------------------
+
+---Assertion is the last step of writing a test and is to validate the output against a known response.
+   The following are best practices on how to write assertions:
+
+    1. Make sure tests are repeatable and run your test multiple times to make sure it gives the same result every time
+    2. Try and assert results that relate to your input data,
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+Executing Test Runners
+-----------------------------------------------------------------------------------------------------------------------
+
+---A  test runner is the Python application that executes your test code, checks the assertions, and gives you test 
+   results in your console is called the test runner.
+
+---At the bottom of test.py, you add snippet of code:
+
+    
+        if __name__ == '__main__':
+            unittest.main()
+
+        It is a command line entry point.It means that if you execute the script alone by running python test.py at the 
+        command line, it will call unittest.main().This executes the test runner by discovering all classes in this file 
+        that inherit from unittest.TestCase.
+
+        1. When you have a single test file run "python <name_file>"
+
+        2. Executing the same test module via the command line as "python -m unittest <name_file>"
+
+        3. You can provide additional options to change the output. One of those is -v for verbose. 
+            "python -m unittest -v <name_file>"
+           
+           Verbose mode lists the names of the tests it executes first, along with the result of each test.
+
+
+        4. Instead of providing the name of a module containing tests, you can request an auto-discovery using the 
+           following:
+            "python -m unittest discover"
+           
+           This will search the current directory for any files named test*.py and attempt to test them.
+
+        5. Once you have multiple test files, as long as you follow the test*.py naming pattern, you can provide the 
+           name of the directory instead by using the -s flag and the name of the directory:
+
+            "python -m unittest discover -s <directory_name>
+
+           unittest will run all tests in a single test plan and give you the results.
+
+        6. If your source code is not in the directory root and contained in a subdirectory, for example in a folder 
+           called src/, you can tell unittest where to execute the tests so that it can import the modules correctly with 
+           the -t flag:
+
+            "python -m unittest discover -s <tests_directory_name> -t src
+
+           Unittest will change to the src/ directory, scan for all test*.py files inside the the tests directory, and 
+           execute them.
+
+                   
+-----------------------------------------------------------------------------------------------------------------------
+How to Use the Django Test Runner
+-----------------------------------------------------------------------------------------------------------------------
+
+---Inside your application direcotry,the Django startapp template will have created a tests.py file inside your 
+   application directory.
+
+        from django.test import TestCase
+
+        class MyTestCase(TestCase):
+            #Your test methods
+
+---You need to inherit from the django.test.TestCase instead of unittest.TestCase.Django TestCase class sets up all 
+   the required state to test.
+
+---To execute your test suite, instead of using unittest at the command line, you use manage.py test:
+
+        "python manage.py test
+
+========================================================================================================================
+More Advanced Testing Scenarios
+========================================================================================================================
+
+---The three basic steps of every test:
+        
+        1. Create your inputs
+
+        2. Execute the code, capturing the output
+
+        3. Compare the output with an expected result
+
+---Parameterization is running the same test and passing different values each time and expecting the same result.
+
+-----------------------------------------------------------------------------------------------------------------------
+Handling Expected Failures
+-----------------------------------------------------------------------------------------------------------------------
+
+---There’s a special way to handle expected errors. You can use .assertRaises() as a context-manager, then inside the 
+   with block execute the test steps:
+
+        class TestSum(unittest.TestCase):
+            def test_bad_type(self):
+                data = "mango"
+                with self.assertRaises(TypeError):
+                    result = sum(data)
+
+     Test case will now only pass if sum(data) raises a TypeError.
+
+
+-----------------------------------------------------------------------------------------------------------------------
+Isolating Behaviors in Your Application
+-----------------------------------------------------------------------------------------------------------------------
+
+---In unit testing, one test could impact the state of the application and cause another test to fail.
+
+---Techniques to use in testing parts of your application that have many side effects:
+
+        1.Refactoring code to follow the Single Responsibility Principle
+
+        2.Mocking out any method or function calls to remove side effects
+
+        3.Using integration testing instead of unit testing for this piece of the application
+
+
+-----------------------------------------------------------------------------------------------------------------------
+Writing Integration Tests
+-----------------------------------------------------------------------------------------------------------------------
+
+---Integration testing is the testing of multiple components of the application to check that they work together. 
+    It might require acting like a consumer or user of the application by:
+
+        1.Calling an HTTP REST API
+
+        2.Calling a Python API
+
+        3.Calling a web service
+
+        4.Running a command line
+   
+---Integration tests are checking more components at once and therefore will have more side effects than a unit test. 
+   It will require more fixtures to be in place, like a database, a network socket, or a configuration file.
+   The data that you create as an input is known as a fixture. It’s common practice to create fixtures and reuse them.
+
+---It’s good practice to separate your unit tests and your integration tests.
+
+---The creation of fixtures required for an integration like a test database and the test cases themselves often 
+   take a lot longer to execute than unit tests,
+
+
+-----------------------------------------------------------------------------------------------------------------------
+Testing Data-Driven Applications
+-----------------------------------------------------------------------------------------------------------------------
+
+
+---Many integration tests will require backend data like a database to exist with certain values.
+
+---These types tests will depend on different test fixtures to make sure they are repeatable and predictable.
+
+---A good technique to use is to store the test data in a folder within your integration testing folder called fixtures 
+   to indicate that it contains test data. Then, within your tests, you can load the data and run the test.
+
+---Within your test case, you can use the .setUp() method to load the test data from a fixture file in a known path and 
+   execute many tests against that test data.
+
+========================================================================================================================
+Testing in Multiple Environments
+========================================================================================================================
+
+---You might want to check that your application works on multiple versions of Python, or multiple versions of a package
+
+---Tox is an application that automates testing in multiple environments
+
+---Installing Tox:~pip install tox
+
+-----------------------------------------------------------------------------------------------------------------------
+Executing Tox
+-----------------------------------------------------------------------------------------------------------------------
+
+---It creates an environment for each version, installs your dependencies, and then runs the test commands.
+
+---Run only a single environment, such as Python 3.7:
+
+        $ tox -e py3.7
+
+---Recreate the virtual environments, in case your dependencies have changed or site-packages is corrupt:
+
+        $ tox -r
+
+---Run Tox with less verbose output:
+      
+        $ tox -q
+
+--Running Tox with more verbose output:
+
+        $ tox -v
+
+========================================================================================================================
+Automating the Execution of Your Tests
+========================================================================================================================
+
+---Automated testing tools are often known as CI/CD tools, which stands for “Continuous Integration/Continuous Deployment.” 
+
+---They can run your tests, compile and publish any applications, and even deploy them into production.
+
+
+
+
+
+
+
