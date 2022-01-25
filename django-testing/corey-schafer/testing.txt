@@ -1,0 +1,9 @@
+---When you write good test for your code it gives you more confidence that your updates and refactoring
+    don't have any unintended consequences or break your code in any way.
+
+----All tests have to be named properly so as to be run, they must start with the name 'test*.py'. Your tests 
+    should be good enough to catch mistakes.
+
+---Mocking can be used mostly when accessing thinngs that are out of your control like urls.
+
+---Tests should be isolated, hence a test should not relay on other tests or affect another tests.s

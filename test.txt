@@ -323,6 +323,45 @@ Automating the Execution of Your Tests
 ---They can run your tests, compile and publish any applications, and even deploy them into production.
 
 
+-----------------------------------------------------------------------------------------------------------------------
+Other Info
+------------------------------------------------------------------------------------------------------------------------
+
+---A linter will look at your code and comment on it. It could give you tips about mistakes you’ve made, correct 
+   trailing spaces, and even predict bugs you may have introduced.
+
+---flake8 is a linter that comments on the style of your code in relation to the PEP 8 specification
+
+    Install flake8 using pip:~ $ pip install flake8
+
+    Run flake8 over a single file, a folder, or a pattern:~ $ flake8 test.py
+
+    It is configurable on the command line or inside a configuration file in your project. If you wanted to ignore certain 
+    rules, you can set them in the configuration.It will inspect a .flake8 file in the project folder or a setup.cfg file. 
+    If you decided to use Tox, you can put the flake8 configuration section inside tox.ini.
+
+    It is a passive linter as it recommends changes, but you have to go and change the code.
+
+---Code formatters will change your code automatically to meet a collection of style and layout practices.They are 
+   aggressive linters.
+
+   black is a very unforgiving formatter. It doesn’t have any configuration options, and it has a very specific style.
+   black requires Python 3.6+.
+   
+   Install black via pip:~pip install black
+
+   To run black at the command line, provide the file or directory you want to format i.e black test.py
+
+---Run a test on your application for checking on common security mistakes or vulnerabilities.
+
+    Install bandit:~$ pip install bandit
+
+    Pass the name of your application module with the -r flag, and it will give you a summary:
+        
+        ~$ bandit -r <application_module_name>
+
+
+
 
 
 

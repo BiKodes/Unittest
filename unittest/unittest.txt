@@ -1,0 +1,311 @@
+--------------------------------------------------------------------------------------------------
+Introduction
+--------------------------------------------------------------------------------------------------
+
+----It supports test automation, sharing of setup and shutdown code for tests, aggregation of 
+    tests into collections, and independence of the tests from the reporting framework.
+
+----Unittest important concepts in an object-oriented way:
+
+        1. Test Fixture
+    It represents the preparation needed to perform one or more tests, and any associated cleanup 
+    actions i.e creating temporary or proxy databases, directories, or starting a server process.
+
+        2. Test Case
+    It is the individual unit of testing. It checks for a specific response to a particular set 
+    of inputs. It provides a base class, TestCase, which may be used to create new test cases.
+
+        3. Test Suite
+    It is a collection of test cases, test suites, or both. It is used to aggregate tests that 
+    should be executed together.
+
+        4. Test Runner
+    It is a component which orchestrates the execution of tests and provides the outcome to the 
+    user.It may use a graphical interface, a textual interface, or return a special value to 
+    indicate the results of executing the tests.
+
+----A testcase is created by subclassing unittest.TestCase. Tests are defined as methods whose 
+    names start with the letters test. 
+    This naming convention informs the test runner about which methods represent tests.
+
+----The setUp() and tearDown() methods allow you to define instructions that will be executed 
+    before and after each test method. 
+
+---------------------------------------------------------------------------------------------------
+Organizing Test Code
+---------------------------------------------------------------------------------------------------
+
+----Basic building blocks of unit testing are test cases — single scenarios that must be set up 
+    and checked for correctness.
+
+----In unittest, test cases are represented by unittest.TestCase instances. 
+    To make your own test cases you must write subclasses of TestCase or use FunctionTestCase.
+
+----The testing code of a TestCase instance should be entirely self contained, such that it can 
+    be run either in isolation or in arbitrary combination with any number of other test cases.
+
+----The simplest TestCase subclass will simply implement a test method 
+    (i.e. a method whose name starts with test) in order to perform specific testing code.
+
+----We use one of the assert*() methods provided by the TestCase base class in order to test 
+    something. 
+    If the test fails, an exception will be raised with an explanatory message, and unittest 
+    will identify the test case as a failure. Any other exceptions will be treated as errors.
+
+----Tests can be numerous, and their set-up can be repetitive. 
+    We can factor out set-up code by implementing a method called setUp(), which the testing 
+    framework will automatically call for every single test we run.
+
+----The order in which the various tests will be run is determined by sorting the test method 
+    names with respect to the built-in ordering for strings.
+
+----If the setUp() method raises an exception while the test is running, the framework will 
+    consider the test to have suffered an error, and the test method will not be executed.
+
+----A tearDown() method tidies up after the test method has been run
+
+----A working environment for testing code is called a test fixture. 
+    A new TestCase instance is created as a unique test fixture used to execute each individual test 
+    method. 
+    Thus setUp(), tearDown(), and __init__() will be called once per test.
+
+----It is recommended that you use TestCase implementations to group tests together according to the 
+    features they test. 
+    Unittest provides a mechanism for this: the test suite, represented by unittest’s TestSuite class.
+
+----In most cases, calling unittest.main() will do the right thing and collect all the module’s test 
+    cases for you and execute them.
+
+------------------------------------------------------------------------------------------------------
+Re-using Old Test Code
+------------------------------------------------------------------------------------------------------
+
+----At times you might have existing test code thatyou would like to run from unittest, without 
+    converting every old test function to a TestCase subclass.
+
+----Unittest provides a FunctionTestCase class. This subclass of TestCase can be used to wrap an 
+    existing test function. Set-up and tear-down functions can also be provided.
+
+----Even though FunctionTestCase can be used to quickly convert an existing test base over to 
+    a unittest-based system, this approach is not recommended. 
+    Taking the time to set up proper TestCase subclasses will make future test refactorings infinitely 
+    easier
+
+----The existing tests may have been written using the doctest module. If so, doctest provides a DocTestSuite 
+    class that can automatically build unittest.
+    TestSuite instances from the existing doctest-based tests.
+
+--------------------------------------------------------------------------------------------------------
+Skipping Tests And Expected Failures
+--------------------------------------------------------------------------------------------------------
+
+----Unittest supports skipping individual test methods and even whole classes of tests.It also supports 
+    marking a test as an “expected failure,” a test that is broken and will fail, but shouldn’t be counted 
+    as a failure on a TestResult.
+
+----TestCase.setUp() can also skip the test. This is useful when a resource that needs to be set up is 
+    not available.
+
+----Expected failures use the expectedFailure() decorator.
+
+----The following decorators and exception implement test skipping and expected failures.
+
+        1. @unittest.skip(reason)
+           Unconditionally skip the decorated test. reason should describe why the test is being skipped.
+
+        2. @unittest.skipIf(condition, reason)
+           Skip the decorated test if condition is true.
+
+        3. @unittest.skipUnless(condition, reason)
+           Skip the decorated test unless condition is true.
+
+        4. @unittest.expectedFailure
+            Mark the test as an expected failure or error. If the test fails or errors in the test function 
+            itself (rather than in one of the test fixture methods) then it will be considered a success. 
+            If the test passes, it will be considered a failure.
+
+        5. exception unittest.SkipTest(reason)
+            This exception is raised to skip a test.
+
+----Skipped tests will not have setUp() or tearDown() run around them. Skipped classes will not have 
+    setUpClass() or tearDownClass() run. Skipped modules will not have setUpModule() or tearDownModule() run.
+
+         
+----------------------------------------------------------------------------------------------------------
+Distinguishing Test Iterations Using Subtests
+----------------------------------------------------------------------------------------------------------
+
+----When there are very small differences among your tests, for instance some parameters, unittest allows 
+    you to distinguish them inside the body of a test method using the subTest() context manager.
+
+----Without using a subtest, execution would stop after the first failure, and the error would be less easy 
+    to diagnose because the value of i wouldn’t be displayed.
+
+
+==========================================================================================================
+Classes And Functions
+==========================================================================================================
+Test cases
+----------------------------------------------------------------------------------------------------------
+class unittest.TestCase(methodName='runTest'):
+    ---Instances of the TestCase class represent the logical test units in the unittest universe.
+       This class is intended to be used as a base class, with specific tests being implemented by concrete 
+       subclasses.
+       This class implements the interface needed by the test runner to allow it to drive the tests, and 
+       methods that the test code can use to check for and report various kinds of failure.
+    
+    ---Each instance of TestCase will run a single base method: the method named methodName. 
+       In most uses of TestCase, you will neither change the methodName nor reimplement the default 
+       runTest() method.
+    
+    ---TestCase instances provide three groups of methods: 
+
+            1.One group used to run the test
+
+            2.Another used by the test implementation to check conditions and report failures
+
+            3.Some inquiry methods allowing information about the test itself to be gathered.
+
+    ---Methods in the first group (running the test) are:
+
+            1.setUp()
+                Method called to prepare the test fixture.
+                It is called immediately before calling the test method.
+                Other than AssertionError or SkipTest, any exception raised by this method will be considered an 
+                error rather than a test failure. The default implementation does nothing.
+
+            2.tearDown()
+                Method called immediately after the test method has been called and the result recorded.
+                It is called even if the test method raised an exception, so the implementation in subclasses may 
+                need to be particularly careful about checking internal state. 
+                Any exception, other than AssertionError or SkipTest, raised by this method will be considered an 
+                additional error rather than a test failure (thus increasing the total number of reported errors).
+                
+                This method will only be called if the setUp() succeeds, regardless of the outcome of the 
+                test method. 
+                The default implementation does nothing.
+
+            3.setUpClass()
+                A class method called before tests in an individual class are run. setUpClass is called with the 
+                class as the only argument and must be decorated as a classmethod().  
+
+            4.tearDownClass()
+                A class method called after tests in an individual class have run. tearDownClass is called with 
+                the class as the only argument and must be decorated as a classmethod().
+
+            5.run(result=None)
+                Run the test, collecting the result into the TestResult object passed as result.
+                If result is omitted or None, a temporary result object is created (by calling the defaultTestResult() 
+                method) and used. 
+
+                The result object is returned to run()’s caller.
+
+                Same effect may be had by simply calling the TestCase instance.
+
+            6.skipTest(reason)
+                Calling this during a test method or setUp() skips the current test. 
+
+            7.subTest(msg=None, **params)
+                Return a context manager which executes the enclosed code block as a subtest.
+                msg and params are optional, arbitrary values which are displayed whenever a subtest fails, allowing you 
+                to identify them clearly. 
+
+            8.debug()
+                Run the test without collecting the result.
+                This allows exceptions raised by the test to be propagated to the caller, and can be used to 
+                support running tests under a debugger.
+                
+----------------------------------------------------------------------------------------------------------
+Grouping Tests
+----------------------------------------------------------------------------------------------------------
+
+----class unittest.TestSuite(tests=())
+
+    This class represents an aggregation of individual test cases and test suites.
+    It presents the interface needed by the test runner to allow it to be run as any other test case.
+
+    Running a TestSuite instance is the same as iterating over the suite, running each test individually.
+
+    If tests is given, it must be an iterable of individual test cases or other test suites that will be used 
+    to build the suite initially. 
+
+    Additional methods are provided to add test cases and suites to the collection later on.
+
+    TestSuite objects behave much like TestCase objects, except they do not actually implement a test.
+    They are used to aggregate tests into groups of tests that should be run together. The following are Some 
+    additional methods that are available to add tests to TestSuite instances:
+
+        1. addTest(test)
+            It is used to add a TestCase or TestSuite to the suite.
+
+        2. addTests(tests)
+            It is used to add all the tests from an iterable of TestCase and TestSuite instances to this 
+            test suite.
+
+            This is equivalent to iterating over tests, calling addTest() for each element.
+            
+----------------------------------------------------------------------------------------------------------
+Loading And Running Tests
+----------------------------------------------------------------------------------------------------------
+
+----class unittest.TestLoader
+  
+    The TestLoader class is used to create test suites from classes and modules. Normally, there is no need 
+    to create an instance of this class.
+
+    The unittest module provides an instance that can be shared as unittest.defaultTestLoader. Using a subclass 
+    or instance, however, allows customization of some configurable properties.
+
+    TestLoader objects have the following attributes:
+
+        1. Errors
+            A list of the non-fatal errors encountered while loading tests. Not reset by the loader at any point.
+            Fatal errors are signalled by the relevant method raising an exception to the caller.
+
+            Non-fatal errors are also indicated by a synthetic test that will raise the original error when run. 
+                
+                             
+----class unittest.TestResult
+    
+    This class is used to compile information about which tests have succeeded and which have failed.
+
+    A TestResult object stores the results of a set of tests. The TestCase and TestSuite classes ensure that 
+    results are properly recorded. Test authors do not need to worry about recording the outcome of tests.
+
+    Testing frameworks built on top of unittest may want access to the TestResult object generated by running 
+    a set of tests for reporting purposes. A TestResult instance is returned by the TestRunner.run() method for this 
+    purpose.
+
+    
+----class unittest.TextTestResult(stream, descriptions, verbosity)
+
+    This is a concrete implementation of TestResult used by the TextTestRunner.
+
+
+    -unittest.defaultTestLoader
+        This is an Instance of the TestLoader class intended to be shared. If no customization of the TestLoader 
+        is needed, this instance can be used instead of repeatedly creating new instances.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

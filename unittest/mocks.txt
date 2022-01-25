@@ -1,0 +1,383 @@
+==================================================================================================================
+Python Mock Object Library
+==================================================================================================================
+
+----While writing robust code, tests are essential for verifying that your application logic is correct, reliable, 
+    and efficient. 
+
+----Obstacles such as complex logic and unpredictable dependencies make writing valuable tests difficult.These obstacles
+    are overcomed by the help of the Python  mock object library, unittest.mock.
+
+---For example: 
+                perhaps we’re writing a social app and want to test out our new ‘Post to Facebook feature’, but 
+                don’t want to actually post to Facebook every time we run our test suite.
+
+----The Python unittest library includes a subpackage named unittest.mock — or if you declare it as a dependency, 
+    simply mock — which provides extremely powerful and useful means by which to mock and stub out these undesired 
+    side-effects.
+
+----They are another important part of unit testing.Because we are only testing a single unit of code, we don’t 
+    really care about what other function calls do.They should only give you a reliable return from them.
+
+----It is good to setting up the mocks in fixtures.
+
+----You can use the Fixture parameters to determine what your mock returns–this is important when a code branch is 
+    determined by the result of the outside call.
+
+----side_effect among other things, allows you to mock different returns for successive calls to the same function.
+
+----Writing a test case with mocks will make our tests smarter, faster, and able to reveal more about how the software 
+    works.
+
+----The mantra to keep repeating is this:
+
+    "Mock an item where it is used, not where it came from."
+
+----If you need to mock the tempfile module for myproject.app.MyElaborateClass, you probably need to apply the mock 
+    to myproject.app.tempfile, as each module keeps its own imports.
+
+----The mock library has a special method decorator for mocking object instance methods and properties, 
+    the @mock.patch.object decorator.
+
+----When using multiple decorators on your test methods, order is important, and it’s kind of confusing. when mapping 
+    decorators to method parameters, work backwards. 
+
+    With multiple method decorators, here’s the order of execution in pseudocode:
+
+    patch_sys(patch_os(patch_os_path(test_something)))
+
+    The patch to sys is the outermost patch and it will be executed last, making it the last parameter in the actual test 
+    method arguments.
+
+----The mock.create_autospec method creates a functionally equivalent instance to the provided class.When the returned 
+    instance is interacted with, it will raise exceptions if used in illegal ways. More specifically, if a method is 
+    called with the wrong number of arguments, an exception will be raised.
+
+----The mock library also includes two important classes upon which most of the internal functionality is built upon: 
+
+        1. mock.Mock 
+
+        2. mock.MagicMock
+
+
+    When given a choice to use a mock.Mock instance, a mock.MagicMock instance, or an auto-spec, always favor using an 
+    auto-spec, as it helps keep your tests sane for future changes. 
+
+    This is because mock.Mock and mock.MagicMock accept all method calls and property assignments regardless of the 
+    underlying API.
+
+
+==================================================================================================================
+What Is Mocking?
+==================================================================================================================
+
+----A mock object substitutes and imitates a real object within a testing environment.It is a powerful tool for 
+    improving the quality of your tests.
+
+----Python mock objects help to control the code’s behavior during testing.
+
+----It is better to test your code in a controlled environment.Replacing the actual request with a mock object would 
+    allow you to simulate external service outages and successful responses in a predictable way.
+
+----It is difficult at times to test certain areas of your codebase. This areas include except blocks and if statements 
+    that are hard to satisfy.
+
+    Python mock objects can help you control the execution path of your code to reach these areas and improve your 
+    code coverage.
+
+----mock objects help you to better understand how you’re using their real counterparts in your code.
+
+
+
+==================================================================================================================
+The Python Mock Library
+==================================================================================================================
+
+----The Python mock object library is unittest.mock. It provides an easy way to introduce mocks into your tests.
+
+----unittest.mock provides a class called Mock which we use to imitate real objects in your codebase. Mock offers 
+    incredible flexibility and insightful data, and along with its subclasses, it meets most Python mocking needs 
+    that one faces in tests.
+
+----The library also provides a function, called patch(), which replaces the real objects in your code with Mock 
+    instances. 
+    It can be used as either a decorator or a context manager, giving you control over the scope in which the object 
+    will be mocked. 
+
+    Once the designated scope exits, patch() will clean up your code by replacing the mocked objects with their 
+    original counterparts.
+    
+
+==================================================================================================================
+The Mock Object
+==================================================================================================================
+
+----unittest.mock offers a base class for mocking objects called Mock. The use cases for Mock are practically 
+    limitless because Mock is so flexible.
+
+----You can substitute an object in your code with your new Mock by passing it as an argument to a function or by 
+    redefining another object.
+
+----When you substitute an object in your code, the Mock must look like the real object it is replacing.Otherwise,
+    the code will not be able to use the Mock in place of the original object.
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+Lazy Attributes And Methods
+-------------------------------------------------------------------------------------------------------------------
+
+----A Mock must simulate any object that it replaces. To achieve such flexibility, it creates its attributes when 
+    you access them.
+
+----Mock is suitable to replace any object because it can create arbitrary attributes on the fly.
+
+----Unlike the real object's method, the mocked method requires no arguments. It accepts any arguments that you pass 
+    to it.
+
+----The return value of a mocked method is also a Mock. The capability of Mock to recursively define other mocks allows 
+    someone to use mocks in complex situations.
+
+----One can use mocks in a multitude of ways because the return value of each mocked method is also a Mock.
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+Assertions And Inspection
+-------------------------------------------------------------------------------------------------------------------
+
+----Mock instances store data on how you used them, such as you can see if you called a method, how you called the 
+    method, and so on.
+
+----The following are ways to use this information:
+
+        1. To assert that your program used an object as you expected.You can make listed assertions to test that 
+           expectation
+
+                ~assert_called()
+                ~assert_called_once()
+                ~assert_called_with()
+                ~assert_called_once_with()
+                ~assert_not_called()            
+
+            If an assertion fails, the mock will raise an AssertionError.
+            
+            .assert_called() ensures you called the mocked method while .assert_called_once() checks that you called the 
+            method exactly one time.
+
+            Assertion functions have variants that let you inspect the arguments passed to the mocked method:
+
+                1- .assert_called_with(*args, **kwargs)
+
+                2- .assert_called_once_with(*args, **kwargs)
+
+            To pass these assertions, you must call the mocked method with the same arguments that you pass to the actual 
+            method.
+
+        2.To view special attributes to understand how your application used an object. You can use the following calls on
+          respective mock methods.
+
+                ~call_count This helps to know the number of times you called mock method
+                ~call_args   This one helps to know the last mock method call
+                ~call_args_list This one gives a list of mock methods calls
+                ~method_calls This gives list of calls to mock object's methods(recursively)
+
+----You can write tests using these attributes to make sure that your objects behave as you intended.
+
+-------------------------------------------------------------------------------------------------------------------
+Managing A Mock’s Return Value
+-------------------------------------------------------------------------------------------------------------------
+
+----One reason to use mocks is to control your code’s behavior during tests. One way to do this is to specify a 
+    function’s return value.
+
+----When writing tests, it is important to ensure that the results are predictable. You can use Mock to eliminate 
+    uncertainty from your code during testing.
+
+----There is a fantastic library for mocking datetime called freezegun.
+
+----You can use .side_effect to make functions return different values when you call them more than once or even raise 
+    exceptions.
+
+
+-------------------------------------------------------------------------------------------------------------------
+Managing A Mock’s Side Effects
+-------------------------------------------------------------------------------------------------------------------
+
+----A .side_effect defines what happens when you call the mocked function.You can control your code’s behavior by 
+    specifying a mocked function’s side effects.
+
+----.side_effect can also be an iterable. The iterable must consist of return values, exceptions, or a mixture of both. 
+    The iterable will produce its next value every time you call your mocked method. 
+
+----You can set .return_value and .side_effect on a Mock directly. However, because a Python mock object needs to be 
+    flexible in creating its attributes, there is a better way to configure these and other settings.
+
+
+-------------------------------------------------------------------------------------------------------------------
+Configuring Your Mock
+-------------------------------------------------------------------------------------------------------------------
+
+----You can configure a Mock to set up some of the object’s behaviors.Some configurable members include .side_effect, 
+    .return_value, and .name. You configure a Mock when you create one or when you use .configure_mock().
+
+----You can configure a Mock by specifying certain attributes when you initialize an object
+
+----While .side_effect and .return_value can be set on the Mock instance, itself, other attributes like .name can only 
+    be set through .__init__() or .configure_mock(). 
+
+     If you try to set the .name of the Mock on the instance, you will get a different result
+
+----.name is a common attribute for objects to use. So, Mock doesn’t let you set that value on the instance in the 
+    same way you can with .return_value or .side_effect.
+
+    If you access mock.name you will create a .name attribute instead of configuring your mock.
+
+    You can configure an existing Mock using .configure_mock()
+
+----By unpacking a dictionary into either .configure_mock() or Mock.__init__(), you can even configure your Python mock 
+    object’s attributes.
+
+=====================================================================================================================
+patch()
+=====================================================================================================================
+
+----unittest.mock provides a powerful mechanism for mocking objects, called patch().This looks up an object in a given 
+    module and replaces that object with a Mock.
+
+----patch() is used as a decorator or a context manager to provide a scope in which you will mock the target object.
+
+
+-------------------------------------------------------------------------------------------------------------------
+patch() as a Decorator
+-------------------------------------------------------------------------------------------------------------------
+
+----If you want to mock an object for the duration of your entire test function, you can use patch() as a function 
+    decorator.
+
+----Monkey patching is the replacement of one object with another at runtime.
+
+----You can use patch() as a decorator and pass to it the target object’s path. The target path consists of the module 
+    name and the object.
+
+----You can define a new parameter(s) for the test function. patch() uses this parameter(s) to pass the mocked object 
+    into your test. From there, you can modify the mock or make assertions as necessary.
+
+----patch() returns an instance of MagicMock, which is a Mock subclass. MagicMock is useful because it implements most 
+    magic methods for you, such as .__len__(), .__str__(), and .__iter__(), with reasonable defaults.
+
+-------------------------------------------------------------------------------------------------------------------
+patch() as a Context Manage
+-------------------------------------------------------------------------------------------------------------------
+
+----Patch() can also be used as context manager.Some reasons why you might prefer it as a context manager include 
+    the following:
+
+            1.You only want to mock an object for a part of the test scope.
+            
+            2.You are already using too many decorators or parameters, which hurts your test’s readability.
+
+----You use Python’s with statement to use patch() as a context manager.
+
+----When the test exits the with statement, patch() replaces the mocked object with the original.
+
+-------------------------------------------------------------------------------------------------------------------
+Patching an Object’s Attributes
+-------------------------------------------------------------------------------------------------------------------
+
+----If you only want to mock one method of an object instead of the entire object. You can do so by using 
+    patch.object().
+
+----object() takes the same configuration parameters that patch() does. But instead of passing the target’s path, you 
+    provide the target object, itself, as the first parameter.
+
+    The second parameter is the attribute of the target object that you are trying to mock. You can also use object() 
+    as a context manager like patch().
+
+----Besides objects and attributes, you can also patch() dictionaries with patch.dict().
+
+
+-------------------------------------------------------------------------------------------------------------------
+Where to Patch
+-------------------------------------------------------------------------------------------------------------------
+
+----Knowing where to tell patch() to look for the object you want mocked is important because if you choose the
+    wrong target location, the result of patch() could be something you didn’t expect.
+
+----patch() the object where it is looked up.
+
+
+=====================================================================================================================
+Common Mocking Problems
+=====================================================================================================================
+
+----Mocking objects can introduce several problems into your tests. Some problems are inherent in mocking while others 
+    are specific to unittest.mock.
+
+
+---------------------------------------------------------------------------------------------------------------------
+Changes To Object Interfaces And Misspellings
+---------------------------------------------------------------------------------------------------------------------
+
+----Classes and function definitions change all the time. When the interface of an object changes, any tests relying 
+    on a Mock of that object may become irrelevant.
+
+----Irrelevant tests may not sound critical, but if they are your only tests and you assume that they work properly, 
+    the situation could be disastrous for your application.
+
+----A problem specific to Mock is that a misspelling can break a test. Recall that a Mock creates its interface when 
+    you access its members. So, you will inadvertently create a new attribute if you misspell its name.
+
+
+=====================================================================================================================
+Avoiding Common Problems Using Specifications
+=====================================================================================================================
+
+----If you change a class or function definition or you misspell a Python mock object’s attribute, you can cause 
+    problems with your tests.
+
+----These problems occur because Mock creates attributes and methods when you access them. The answer to these issues 
+    is to prevent Mock from creating attributes that don’t conform to the object you’re trying to mock.
+
+----When configuring a Mock, you can pass an object specification to the spec parameter. The spec parameter accepts 
+    a list of names or another object and defines the mock’s interface. 
+
+    If you attempt to access an attribute that does not belong to the specification, Mock will raise an AttributeError.
+
+----unittest.mock provides convenient methods of automatically specifying a Mock instance’s interface.One way to 
+    implement automatic specifications is create_autospec
+
+
+
+
+Refs:   https://realpython.com/python-mock-library/
+        https://realpython.com/python-mock-library/#the-mock-object
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

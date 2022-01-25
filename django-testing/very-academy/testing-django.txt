@@ -1,0 +1,68 @@
+----Testing applications is the craft of checking errors in your applications.
+
+----Django as a library caputures errors and provides developers with an intuitive feedback in the console, however, it doesn't capture all types of errors and as your application scales it is less than desirable as a testing tool.You need to test your application to ensure it is error free.
+
+----Types of Tests to perform in an application development lifecycle which helps to deliver a quality assured application:
+
+    1.Unit testing
+
+        This is where a software development and testing approach in which the smallest testable part of an application called units are individually and independently tested. It is an individual and Isolated test that tests one very specific function of an application.
+
+Manually testing the functionality of individual components as one continues with their development  is unit testing.i.e Developing a page and checking the URL to attest that the page is working.
+
+Unit Testing can be done manually but it is usually automated.  
+
+    2.Integration testing
+
+        This are larger tests that focus on testing maybe the entire application.It combines different pieces of code functionality to make sure that they behave correctly.We use unit testing for smaller components then we connect these components together to test their integration
+
+    3.Software testing
+
+    4.Compliance testing
+
+----Testing can be done in phases, from when we start building an application, differents parts of the system can be coded and test them stage by stage.
+
+----The different parts of the system will need an integration test of these smaller components.Once the coding of the application is complete and a complete integration system we perform asystem test(Software testing).System Test tests the end-to-end functionality of the software.We finally test and evaluate the system's compliance with its specified requirements.
+
+---Automation Testing/Automated Testing is avery common software testing technique to test and compare the actual outcome with the expected outcome.ie. If your application was to do A, B and C , you have to test it to ensure that it does.
+
+---In Django automated testing can be achieved by writting tests scripts.
+
+---In Automated Testing once tests are written we can run these tests constantly to continue checking the quality of functionality while the application continues to develop.We can test new code, when we refactor the code or even modify the existing code,you can test to ensure the changes have not affected your application.
+
+----When you create an application in django, there is a file called tests.py that is generated in the app folder.
+
+----In django you cann't control what tests you run, however, when django is instructed will look for tests to be run in any file that begin with "test*.py"
+
+---Django hooks on the Python Standard library module unittest and creates a wrapper around it to enable Django testing activities.The Django Unittesting defines tests using a class-based approach and not a function based approach.
+
+--The information returned from running tests can be controlled which is defined in verbosity.This can be used to determine the amount of notification and debug information that is printed in the console once a test is completed.Zero means no output, One is normal output and Two is verbose output.
+
+---Tests create a temporary database that is destroyed immidiately the tests have been completed.
+
+
+---Coverage.py (pip install coverage)gives a developer an insight on what to test in an application.It outputs a coverage report giving details on potential areas for testing.i.e use the command "coverage run" but if you run the "coverage run manage.py test" command, it will run the tests associated in that specific project. The command "coverage report" might pick up some unnecessary information hence a need to remove them from that report. This can be achieved by running the following command "coverage run --omit='*/directory or file to remove/*' manage.py test.
+
+---The developer is required to build as many tests as possible to get 100% coverage of testing in specific areas.
+
+---The command "coverage html" provides the develpoer with a new section(folder) on the left-hand side of the editor. You can open the folder and copy path of an index file and paste it in a browser for components drilling.It shows the developer what is missing in the tests 
+
+---Model-bakery package (pip install model_bakery) is used to create fixtures for testing. It auto-creates data in your model when you're utilizing a model to test.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

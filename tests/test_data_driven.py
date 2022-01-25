@@ -1,9 +1,10 @@
 import unittest
 
+
 class TestBasic(unittest.TestCase):
     def setUp(self):
-        #Load test data
-        self.app = App(database='fixtures/test_basic.json')
+        # Load test data
+        self.app = App(database="fixtures/test_basic.json")
 
     def test_customer_count(self):
         self.assertEqual(len(self.app.customers), 100)
@@ -16,8 +17,8 @@ class TestBasic(unittest.TestCase):
 
 class TestComplesData(unittest.TestCase):
     def setUp(self):
-        #Load test data
-        self.app = App(database='fixtures/test_complex.json')
+        # Load test data
+        self.app = App(database="fixtures/test_complex.json")
 
     def test_customer_count(self):
         self.assertEqual(len(self.app.customer), 1000)
@@ -28,5 +29,5 @@ class TestComplesData(unittest.TestCase):
         self.assertEqual(customer.address, "521 Onjiku, Kisumu, Siaya")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

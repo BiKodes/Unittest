@@ -1,0 +1,22 @@
+---Automated Test is a piece of code which makes sure that another piece of code is working correctly under a certain condition.
+
+---Why should you Test?.
+
+    1. Higher application quality(less bugs)
+
+    2.Easier refactoring(Refactoring is changing a piece of code without altering its behavior). This can be confirmed through assertion.
+
+    3.Easier version upgrades.Running automated tests can help findout out errors in software version upgrades in a project and have the bugs fixed.
+
+---Types of Tests:
+
+    1.Unit TestS: They test one piece independently of other pieces and are fast to run. 
+
+    2.Integration Tests: They test multiple pieces together to assure that they work well with one another.
+
+    3.Functional Tests:They are also called acceptance tests.They test that everything works from the end-user's point of view.They are the slowest to run.Selenium is used here to spin up a real testing browser.
+
+---Tests are detected by by djangp looking at a file that starts with 'test*.py' and then looks for classes that also start with 'test*' and for functions which start with 'test'.
+
+---Unittest uses avariety of testing methods i.e assertEquals() asserts that two passed arguements are equal.
+
