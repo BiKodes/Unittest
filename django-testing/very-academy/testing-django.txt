@@ -49,6 +49,23 @@ Unit Testing can be done manually but it is usually automated.
 
 ---Model-bakery package (pip install model_bakery) is used to create fixtures for testing. It auto-creates data in your model when you're utilizing a model to test.
 
+======================================================================================================================================================
+SELENIUM
+===============================================================================================================================================
+
+----Selenium provides the developer with the tools to allow them to interact with a real browser.i.e To perform actions automatically.It can be utilized in all different programming languages.It provides test automation as the developer doesn't have to loadup the web page.
+
+----It allows us to automate web-based application testing.
+
+BENEFITS:
+
+1.Multiple Browsers:Application might react differently on multiple browsers and selenium provides us with the need help.
+
+2.Screen Resolution:When we need to test our application on different screen resolutions, selenium comes in hand.
+
+3.Use-cases:
+    
+
 
 
 
