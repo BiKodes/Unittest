@@ -1,9 +1,6 @@
-# contactsapi
+# About
 
-[![Build Status](https://travis-ci.org/BikoCodes/contactsapi.svg?branch=master)](https://travis-ci.org/BikoCodes/contactsapi)
-[![Built with](https://img.shields.io/badge/Built_with-Cookiecutter_Django_Rest-F7B633.svg)](https://github.com/agconti/cookiecutter-django-rest)
-
-Its all about a Weissman score > 5.0. Check out the project's [documentation](http://BikoCodes.github.io/contactsapi/).
+This is a RESTFUL API that manages personal contacts of the user and maps every single contact to its owner with specific images respectively.
 
 # Prerequisites
 
