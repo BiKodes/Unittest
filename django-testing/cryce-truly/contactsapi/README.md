@@ -163,9 +163,14 @@ Takes two numbers and returns the sum.
 
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS
+- Python 3.8.10
+- Django 4.0.1
+- Django Rest Framework 3.13.1
+- Django Unittesting
+- Selenium 4.1.0
+- Docker
+- Ansible
 
-**Server:** Node, Express
 
 ## Running Tests
 
