@@ -103,13 +103,25 @@ Takes two numbers and returns the sum.
    $ python3 -m venv venv && source venv/bin/activate
   ```
 
-2. Install the requirements:
+2. Clone the contactsapi project
+
+  ```bash
+    git clone https://github.com/BikoCodes/tests.git
+  ```
+
+3. Navigate to the contactsapi directory
+
+  ```bash
+    cd contactsapi
+  ```
+
+4. Install the requirements:
 
   ```sh
    (venv)$ pip install -r requirements/dev.txt
   ```
 
-3. Configure the specified environment variables below in an env.sh file:
+5. Configure the specified environment variables below in an env.sh file:
 
   ```sh
     export  DATABASE_URL=postgresql://<user>:<pass>@localhost/<database>
@@ -120,67 +132,34 @@ Takes two numbers and returns the sum.
     export GOOGLE_CLIENT_SECRET= provided by Google
   ```
 
-4. Source the environment variables.
+6. Source the environment variables.
 
   ```sh
     (venv)$ source env.sh
   ```
 
-5. Stage the database migrations.
+7. Stage the database migrations.
   ```sh
-    (venv)$ python manage.py makemigrations
+    (venv)$ python3 manage.py makemigrations
   ```
   
-6. Apply the database migrations.
+8. Apply the database migrations.
 
   ```sh
-    (venv)$ python manage.py migrate
+    (venv)$ python3 manage.py migrate
   ```
 
-7. Register and login: navigate to 
+9. Start the server
+  ```sh
+    (venv)$ $ python3 manage.py runserver 
+  ```
+
+10. Register and login. Navigate to: 
   ```sh
     http://localhost:5000
   ```
 
-8. 
 
-
-
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-`API_KEY`
-
-`ANOTHER_API_KEY`
-
-
-
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://link-to-project
-```
-
-Go to the project directory
-
-```bash
-  cd my-project
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run start
-```
 
 ## Tech Stack
 
