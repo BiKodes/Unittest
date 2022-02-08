@@ -49,7 +49,7 @@ I am blessed to be surrounded by many extraordinary people in my life.Without th
 
 I must offer special thanks to: 
 
-- Engineer [Josephat Macharia](https://gitlab.com/joemash) 
+- **Engineer** [Josephat Macharia](https://gitlab.com/joemash) 
 
 Whom I count on in so very many ways and whose enthusiasm for software development always inspires me.
 
