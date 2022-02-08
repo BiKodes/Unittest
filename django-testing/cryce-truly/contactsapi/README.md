@@ -97,16 +97,52 @@ Takes two numbers and returns the sum.
 
 # Local Development
 
-Start the dev server for local development:
-```bash
-docker-compose up
-```
+1. Create and activate a virtual environment:
 
-Run a command inside the docker container:
+  ```sh
+   $ python3 -m venv venv && source venv/bin/activate
+  ```
 
-```bash
-docker-compose run --rm web [command]
-```
+2. Install the requirements:
+
+  ```sh
+   (venv)$ pip install -r requirements/dev.txt
+  ```
+
+3. Configure the specified environment variables below in an env.sh file:
+
+  ```sh
+    export  DATABASE_URL=postgresql://<user>:<pass>@localhost/<database>
+    export  TEST_DATABASE_URL=sqlite:////tmp/dev.db
+    export  SECRET_KEY=not-so-secret
+
+    export GOOGLE_CLIENT_ID= provided by [`Google`](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid) 
+    export GOOGLE_CLIENT_SECRET= provided by [`Google`](https://developers.google.com/api-client-library/dotnet/guide/aaa_client_secrets)
+  ```
+
+4. Source the environment variables.
+
+  ```sh
+    (venv)$ source env.sh
+  ```
+
+5. Stage the database migrations.
+  ```sh
+    (venv)$ python manage.py makemigrations
+  ```
+  
+6. Apply the database migrations.
+
+  ```sh
+    (venv)$ python manage.py migrate
+  ```
+
+7. Register and login: navigate to 
+  ```sh
+    http://localhost:5000
+  ```
+
+8. 
 
 
 
