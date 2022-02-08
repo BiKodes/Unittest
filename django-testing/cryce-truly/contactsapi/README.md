@@ -1,4 +1,3 @@
-
 ## Badges
 
 Add badges from somewhere like: [shields.io](https://shields.io/)
@@ -7,6 +6,33 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
+## Table of contents
+
+1.About
+
+2.Acknowledgements
+
+3.API Reference
+
+4.Features
+
+5.Tech Stack
+
+6.Local Development
+
+7.Environment Variables
+
+8.Run Locally
+
+9.Running Tests
+
+10.Demo
+
+11.Lessons Learned
+
+12.Feedback
+
+13.License
 
 # About
 
@@ -60,9 +86,9 @@ Takes two numbers and returns the sum.
 
 
 
-# Prerequisites
+<!-- # Prerequisites
 
-- [Docker](https://docs.docker.com/docker-for-mac/install/)  
+- [Docker](https://docs.docker.com/docker-for-mac/install/)   -->
 
 # Local Development
 
@@ -129,26 +155,19 @@ To run tests, run the following command
   npm run test
 ```
 
+## Demo
 
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-## Support
-
-For support, email fake@fake.com or join our Slack channel.
-
+Insert gif or link to demo
 
 ## Lessons Learned
 
 What did you learn while building this project? What challenges did you face and how did you overcome them?
 
 
-
-## Demo
-
-Insert gif or link to demo
-
 ## Feedback
 
 If you have any feedback, please reach out to us at fake@fake.com
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
