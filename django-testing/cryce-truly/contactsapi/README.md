@@ -8,31 +8,31 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 ## Table of contents
 
-1.About
+* [About](#about)
 
-2.Acknowledgements
+* [Acknowledgements](#acknowledgements)
 
-3.API Reference
+* [API Reference](#api-reference)
 
-4.Features
+* [Features](#features)
 
-5.Tech Stack
+* [Tech Stack](#tech-stack)
 
-6.Local Development
+* [Local Development](#local-development)
 
-7.Environment Variables
+* [Environment Variables](#environment-variables)
 
-8.Run Locally
+* [Run Locally](#run-locally)
 
-9.Running Tests
+* [Running Tests](#running-tests)
 
-10.Demo
+* [Demo](#demo)
 
-11.Lessons Learned
+* [Lessons Learned](#lessons-learned)
 
-12.Feedback
+* [Feedback](#feedback)
 
-13.License
+* [License](#license)
 
 # About
 
