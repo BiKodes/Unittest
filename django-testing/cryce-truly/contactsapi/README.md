@@ -116,10 +116,9 @@ Takes two numbers and returns the sum.
     export  TEST_DATABASE_URL=sqlite:////tmp/dev.db
     export  SECRET_KEY=not-so-secret
 
-    export GOOGLE_CLIENT_ID= provided by [Google][CID]
-    export GOOGLE_CLIENT_SECRET= provided by [Google](https://developers.google.com/api-client-library/dotnet/guide/aaa_client_secrets)
+    export GOOGLE_CLIENT_ID= provided by `Google`
+    export GOOGLE_CLIENT_SECRET= provided by `Google`
   ```
-  [CID]:(https://developers.google.com/identity/gsi/web guides/get-google-api-clientid) 
 
 4. Source the environment variables.
 
