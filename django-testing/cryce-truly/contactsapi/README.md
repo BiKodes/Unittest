@@ -6,6 +6,8 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
+
+
 ## Table of contents
 
 * [About](#about)
@@ -38,15 +40,18 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 **Version 1.0.0**
 
-This is a RESTFUL API that manages personal contacts of the user and maps every single contact to its owner with specific images respectively.
+This is a RESTFUL API that manages personal contacts of the user and maps every single contact to its owner with their specific images respectively.
 
 
 ## Acknowledgements
 
- - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+I am blessed to be surrounded by many extraordinary people in my life.Without them, it would not be possible for me to do what I do and advance in my mission of being an apristine Software Craftsman. I am deeply grateful.
 
+I must offer special thanks to: 
+
+- Engineer [Josephat Macharia](https://gitlab.com/joemash) 
+
+Whom I count on in so very many ways and whose enthusiasm for software development always inspires me.
 
 
 ## API Reference
