@@ -99,7 +99,7 @@ Takes two numbers and returns the sum.
 
 1. Create and activate a virtual environment:
 
-  ```sh
+  ```bash
    $ python3 -m venv venv && source venv/bin/activate
   ```
 
@@ -117,13 +117,13 @@ Takes two numbers and returns the sum.
 
 4. Install the requirements:
 
-  ```sh
+  ```bash
    (venv)$ pip install -r requirements/dev.txt
   ```
 
 5. Configure the specified environment variables below in an env.sh file:
 
-  ```sh
+  ```bash
     export  DATABASE_URL=postgresql://<user>:<pass>@localhost/<database>
     export  TEST_DATABASE_URL=sqlite:////tmp/dev.db
     export  SECRET_KEY=not-so-secret
@@ -134,31 +134,30 @@ Takes two numbers and returns the sum.
 
 6. Source the environment variables.
 
-  ```sh
+  ```bash
     (venv)$ source env.sh
   ```
 
 7. Stage the database migrations.
-  ```sh
+  ```bash
     (venv)$ python3 manage.py makemigrations
   ```
   
 8. Apply the database migrations.
 
-  ```sh
+  ```bash
     (venv)$ python3 manage.py migrate
   ```
 
 9. Start the server
-  ```sh
+  ```bash
     (venv)$ $ python3 manage.py runserver 
   ```
 
 10. Register and login. Navigate to: 
-  ```sh
+  ```bash
     http://localhost:5000
   ```
-
 
 
 ## Tech Stack
@@ -174,24 +173,25 @@ Takes two numbers and returns the sum.
 
 ## Running Tests
 
-To run tests, run the following command
+To run tests, run the following command from the projects root:
 
 ```bash
-  npm run test
+  (venv)$ coverage run manage.py test
 ```
 
 ## Demo
 
-Insert gif or link to demo
+Want to see the contactapi application in action?.
+
+[Register and Login](https://github.com/BikoCodes/tests.git)
 
 ## Lessons Learned
 
-What did you learn while building this project? What challenges did you face and how did you overcome them?
-
+Developing RESTFUL API's integrated with unittesting test and functional testing.
 
 ## Feedback
 
-If you have any feedback, please reach out to us at fake@fake.com
+If you have any feedback, please reach out to us at bikocodes@gmail.com
 
 ## License
 
