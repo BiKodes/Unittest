@@ -116,8 +116,8 @@ Takes two numbers and returns the sum.
     export  TEST_DATABASE_URL=sqlite:////tmp/dev.db
     export  SECRET_KEY=not-so-secret
 
-    export GOOGLE_CLIENT_ID= provided by `Google`
-    export GOOGLE_CLIENT_SECRET= provided by `Google`
+    export GOOGLE_CLIENT_ID= provided by Google
+    export GOOGLE_CLIENT_SECRET= provided by Google
   ```
 
 4. Source the environment variables.
