@@ -88,6 +88,26 @@ Whom I count on in so very many ways and whose enthusiasm for software developme
 - [x] Takes a **refresh** JSON web token and returns an **access** type JSON web token if the *refresh* token is **valid**.
 - [x] Token **verify** takes a token and indicates if it is valid.It doesn't provide additional information about a token's fitness for a narrowed down use.  
 
+## Architecture
+
+This project impliments the follwing **layers**:
+
+#### 1. Presentation Layer
+
+This represents logic that consume the user logic from the `Usecase Layer`
+and renders to the view. Here you can choose to render the view in either `swagger` or `redoc`
+
+#### 2. Application Layer
+
+The application specific logic lives here, this includes  interfaces, views, serializers, models etc.
+
+
+## Patterns used
+
+#### 12 Factor App
+
+The project has been structured as a 12 factor app. For detailed exploration check the link 
+https://12factor.net/
 
 # Local Development
 
