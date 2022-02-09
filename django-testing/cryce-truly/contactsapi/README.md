@@ -105,7 +105,9 @@ https://12factor.net/
 
 - #### Unit of Work Pattern
 
-This pattern coordinates the writing out of changes made to objects using the repository pattern. For more details see https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/#:~:text=The%20Unit%20of%20Work%20pattern,or%20fail%20as%20one%20unit.
+This pattern coordinates the writing out of changes made to objects using the repository pattern. 
+
+For more details see https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/#:~:text=The%20Unit%20of%20Work%20pattern,or%20fail%20as%20one%20unit.
 
 # Local Development
 
@@ -170,7 +172,6 @@ This pattern coordinates the writing out of changes made to objects using the re
   ```bash
     http://localhost:5000
   ```
-
 
 ## Tech Stack
 
