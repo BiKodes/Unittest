@@ -7,7 +7,6 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
 
-
 ## Table of contents
 
 * [About](#about)
@@ -21,8 +20,6 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 * [Tech Stack](#tech-stack)
 
 * [Local Development](#local-development)
-
-* [Run Locally](#run-locally)
 
 * [Running Tests](#running-tests)
 
@@ -99,15 +96,14 @@ and renders to the view. Here you can choose to render the view in either `swagg
 
 The application specific logic lives here, this includes  interfaces, views, serializers, models etc.
 
-
-## Patterns used
+## Patterns Used
 
 #### 12 Factor App
 
 The project has been structured as a 12 factor app. For detailed exploration check the link 
 https://12factor.net/
 
-#### 4. unit of work pattern
+#### 4. Unit of Work Pattern
 This pattern coordinates the writing out of changes made to objects using the repository pattern. For more details see https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/#:~:text=The%20Unit%20of%20Work%20pattern,or%20fail%20as%20one%20unit.
 
 # Local Development
