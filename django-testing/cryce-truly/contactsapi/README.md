@@ -64,7 +64,7 @@ Whom I count on in so very many ways and whose enthusiasm for software developme
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `api_token` | `string` | **Required**. Your Authentication credentials. |
+| `auth_token` | `string` | **Required**. Your Authentication credentials. |
 
 #### Get one contact
 
