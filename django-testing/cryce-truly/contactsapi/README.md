@@ -56,30 +56,25 @@ Whom I count on in so very many ways and whose enthusiasm for software developme
 
 ## API Reference
 
-#### Get all items
+#### Get all contacts
 
-```http
-  GET /api/items
+```http://localhost:8000/
+  GET contacts/
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
+| `api_token` | `string` | **Required**. Your Authentication credentials. |
 
-#### Get item
+#### Get one contact
 
 ```http
-  GET /api/items/${id}
+  GET /contacts/${id}
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
-
-#### add(num1, num2)
-
-Takes two numbers and returns the sum.
-
+| `id`      | `integer` | **Required**. Id of the contact to fetch |
 
 
 ## Features
