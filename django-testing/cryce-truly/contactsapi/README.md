@@ -22,8 +22,6 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 * [Local Development](#local-development)
 
-* [Environment Variables](#environment-variables)
-
 * [Run Locally](#run-locally)
 
 * [Running Tests](#running-tests)
@@ -108,6 +106,9 @@ The application specific logic lives here, this includes  interfaces, views, ser
 
 The project has been structured as a 12 factor app. For detailed exploration check the link 
 https://12factor.net/
+
+#### 4. unit of work pattern
+This pattern coordinates the writing out of changes made to objects using the repository pattern. For more details see https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/#:~:text=The%20Unit%20of%20Work%20pattern,or%20fail%20as%20one%20unit.
 
 # Local Development
 
