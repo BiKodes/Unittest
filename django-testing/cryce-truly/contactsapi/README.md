@@ -98,12 +98,13 @@ The application specific logic lives here, this includes  interfaces, views, ser
 
 ## Patterns Used
 
-#### 12 Factor App
+- #### 12 Factor App
 
 The project has been structured as a 12 factor app. For detailed exploration check the link 
 https://12factor.net/
 
-#### 4. Unit of Work Pattern
+- #### Unit of Work Pattern
+
 This pattern coordinates the writing out of changes made to objects using the repository pattern. For more details see https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/#:~:text=The%20Unit%20of%20Work%20pattern,or%20fail%20as%20one%20unit.
 
 # Local Development
