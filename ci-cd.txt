@@ -1,0 +1,110 @@
+======================================================================================================
+What is CI?
+======================================================================================================
+
+----It is the practice of frequently building and testing each change done to your code automatically 
+    and as early as possible. 
+
+    Martin Fowler defines CI as follows:
+
+    “Continuous Integration is a software development practice where members of a team integrate their 
+    work frequently, usually each person integrates at least daily - leading to multiple integrations 
+    per day. Each integration is verified by an automated build (including test) to detect integration 
+    errors as quickly as possible.”
+
+----After every integration, you need to build the source code. 
+
+    Building means transforming your high-level code into a format your computer knows how to run. 
+    Finally, the result is systematically tested to ensure your changes did not introduce errors.
+
+----Linting—Running a program, called a linter, to analyze code for potential errors. flake8 is commonly 
+    used to check if your code conforms to the standard Python coding style. 
+    Linting makes sure your code is easy to read for the rest of the Python community.
+
+--- Code coverage is the percentage of source code that is “covered” by your tests. pytest has an extension, 
+    pytest-cov, that helps you understand your code coverage.
+
+
+----------------------------------------------------------------------------------------------------------
+ CircleCI as our external continuous integration service
+----------------------------------------------------------------------------------------------------------
+
+----CI is aprocess where a team members integrate their work continously in a shared repo.It is best achieved 
+    using some SCM tools like GIT can be daily or as needed every integration or checkin in the repo is validated 
+    by automated build, automated  unit or intgration tests.
+
+----CD is an automated deployment to PROD.Every change that passes through Automation Tests is deployed to 
+    production. after a I process, deploying on a PROD like env and running automation tests to ensure the 
+    build is ready for release.It ensures the build build is always in deployable state.
+
+----“Integration” stands for “integrating changes into main code branch”. Continuously. So the CI - is a process 
+    that is organised to allow repeatable and predictable delivery of changes from feature branches into a mainline 
+    branch. The most important property of CI is that it guarantees that the changes being integrated do not break 
+    the mainline branch.
+
+----Build management system/CI/CD Framework i.e CercleCI and Jenkins, Travis CI
+
+----Gitlab CI/CD is an automation engine that enables teams to perform DevOps practices
+
+---It helps one to automatically build, test and deploy using a Gitlab pipeline.
+
+---CI.CD Pipeline is an automated set of sequential steps to build, test and deliver/deploy your code.
+
+---Gitlab pipelines have two main components.
+    1. Jobs, this describes the task that need to be done
+
+    2. Stages, this defines the order in which jobs will be completed.
+
+---A Pipeline is a set of instructions for a program to execute.
+
+---Gitlab Runner is a program that executes jobs in a pipeline.
+
+---Gitlab Runner is a separate program that can be run on your local host host, VM or even container such as docker. It is similar with the concept of Jenkins Agent.
+
+---Gitlab assigns pipeline jobs to available Runners at pipeline runtime
+
+---The script keyword allows us to specifiy commands that the GitLab runner assigned to that specific job will execute.The commands are executed in the listed order.
+
+---Every job must have the script keyword.
+
+---Jobs run independently of each other and have a fresh environment in each job.  
+
+    Passing artifacts between jobs is controlled using the ARTIFACTS and DEPENDENCIES keywords. When finished use the planned WORKSPACES feature to persist a common workspace between serial jobs.
+
+---The ARTIFACTS keyword allows us to specify files that should be shared with downstream jobs in the pipeline.This keyword also allows us to download the specified artifacts to our local machine after the pipeline has completed. It helps to pass the output from one job to a downstream job.
+
+---Docker's image is used to contain all dependencies one needs. The target docker image is specified using  the image keyword the value of the image keyword should be the name of the target docker image that you would like gitlab runners to use.The image vlue can be specified with a tag attached on it.
+
+    When we run the pipeline and a JOB is executed by GitLab runner, the RUNNER pulls the specified docker image run a container from that image and then it will execute all the scripts specified with a job description in that container.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

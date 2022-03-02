@@ -37,7 +37,6 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 This is a RESTFUL API that manages personal contacts of the user and maps every single contact to its owner with their specific images respectively.
 
-
 ## Acknowledgements
 
 I am blessed to be surrounded by many extraordinary people in my life.Without them, it would not be possible for me to do what I do and advance in my mission of being an apristine Software Craftsman. I am deeply grateful.
@@ -107,7 +106,7 @@ https://12factor.net/
 
 This pattern coordinates the writing out of changes made to objects using the repository pattern. 
 
-For more details see https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/#:~:text=The%20Unit%20of%20Work%20pattern,or%20fail%20as%20one%20unit.
+For more details se e https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/#:~:text=The%20Unit%20of%20Work%20pattern,or%20fail%20as%20one%20unit.
 
 # Local Development
 
@@ -182,7 +181,6 @@ For more details see https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/
 - Selenium 4.1.0
 - Docker
 - Ansible
-
 
 ## Running Tests
 

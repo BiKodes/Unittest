@@ -8,7 +8,7 @@ django-cors-headers
 
 #Libs
 google-api-python-client==2.36.0
-facebook-sdk-python==0.0.4
+facebook-sdk-python
 
 
 # For the persistence stores
@@ -34,6 +34,7 @@ ipython==8.0.0
 mkdocs==1.2.3
 flake8==4.0.1
 drf-yasg
+tox
 
 
 # Testing
@@ -44,6 +45,7 @@ nose2
 coverage==6.2
 model_bakery==1.4.0
 selenium==4.1.0
+black
 
 # Static and Media Storage
 django-storages==1.12.3

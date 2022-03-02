@@ -48,9 +48,7 @@ class Common(Configuration):
     },
     
     }
-
-
-
+    
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
     MIDDLEWARE = (
         'django.middleware.security.SecurityMiddleware',
@@ -88,8 +86,6 @@ class Common(Configuration):
         )
     }
     
-    
-
     # General
     APPEND_SLASH = False
     TIME_ZONE = 'UTC'
@@ -103,7 +99,7 @@ class Common(Configuration):
 
     chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
     SECRET_KEY = get_random_string(50, chars)
-
+    
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/2.0/howto/static-files/
     STATIC_ROOT = os.path.normpath(join(os.path.dirname(BASE_DIR), 'static'))
